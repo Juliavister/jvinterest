@@ -8,6 +8,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+const BASE_URL = process.env.BASE_URL || "http://localhost:3001";
+
 // Ensure uploads folder exists
 if (!fs.existsSync("./uploads")) {
   fs.mkdirSync("./uploads");
@@ -47,7 +49,7 @@ app.post("/upload", upload.single("image"), (req, res) => {
 
   const newImage = {
     id: Date.now().toString(),
-    url: `http://localhost:3001/${filePath}`,
+    url: `${BASE_URL}/${filePath}`,
     category: "uncategorized",
     tags: [],
     createdAt: Date.now(),

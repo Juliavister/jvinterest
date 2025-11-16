@@ -8,6 +8,8 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+const BASE_URL = process.env.RENDER_EXTERNAL_URL || "http://localhost:3001";
+
 // Log all requests
 app.use((req, res, next) => {
   console.log(req.method, req.url);
@@ -63,7 +65,7 @@ app.post("/upload", (req, res) => {
 
     const newImage = {
       id: Date.now().toString(),
-      url: `http://localhost:3001/${filePath}`,
+      url: `${BASE_URL}/${filePath}`,
       category,
       tags: [],
       createdAt: Date.now(),

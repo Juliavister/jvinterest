@@ -19,7 +19,6 @@ const categories = [
   "uncategorized",
 ];
 
-// Updated pastel color map
 const categoryColors: Record<string, string> = {
   outfits: "bg-[#FFE5D9]",
   matcha: "bg-[#D8E2DC]",
@@ -43,8 +42,6 @@ const ImageModal: React.FC<Props> = ({ image, onClose, onUpdate }) => {
   if (!image) return null;
 
   const handleSave = async () => {
-    console.log("SAVE CLICKED!");
-
     const res = await updateImage(image.id, editCategory);
 
     if (res.success) {
@@ -57,14 +54,12 @@ const ImageModal: React.FC<Props> = ({ image, onClose, onUpdate }) => {
     <div className="fixed inset-0 bg-black/40 z-[99999] flex items-center justify-center">
       <div className="bg-white p-6 rounded-2xl shadow-xl w-full max-w-lg">
 
-        {/* IMAGE */}
         <img src={image.url} className="w-full rounded-xl mb-5 shadow-sm" />
 
         <h2 className="text-lg font-semibold mb-3 text-gray-700">
           Edit Category
         </h2>
 
-        {/* CATEGORY SELECTOR */}
         <div className="flex flex-wrap gap-2 mb-6">
           {categories.map((cat) => {
             const isActive = editCategory === cat;
@@ -77,7 +72,11 @@ const ImageModal: React.FC<Props> = ({ image, onClose, onUpdate }) => {
                   px-4 py-2 rounded-full text-sm transition-all 
                   border border-transparent 
                   ${categoryColors[cat]} 
-                  ${isActive ? "ring-2 ring-[#F4ACB7] scale-105" : "opacity-80 hover:opacity-100"}
+                  ${
+                    isActive
+                      ? "ring-2 ring-[#F4ACB7] scale-105"
+                      : "opacity-80 hover:opacity-100"
+                  }
                 `}
                 onClick={() => setEditCategory(cat)}
               >
@@ -87,7 +86,6 @@ const ImageModal: React.FC<Props> = ({ image, onClose, onUpdate }) => {
           })}
         </div>
 
-        {/* BUTTONS */}
         <div className="flex justify-between mt-4">
           <button
             type="button"

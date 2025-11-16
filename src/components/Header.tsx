@@ -8,7 +8,6 @@ interface HeaderProps {
   onUpload: (files: File[]) => void;
 }
 
-// Full category list including new ones
 const categories = [
   "all",
   "uncategorized",
@@ -21,7 +20,6 @@ const categories = [
   "other",
 ];
 
-// Pretty pastel colors for each category
 const categoryColors: Record<string, string> = {
   all: "#FFE5D9",
   uncategorized: "#E5E5E5",
@@ -46,12 +44,10 @@ const Header: React.FC<HeaderProps> = ({
       className="fixed top-0 left-0 w-full backdrop-blur-md border-b px-4 py-3 z-50 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"
       style={{ backgroundColor: "#FFE5D9CC", borderColor: "#D8E2DC" }}
     >
-      {/* Logo */}
       <h1 className="text-2xl font-bold" style={{ color: "#9D8189" }}>
         jvterest
       </h1>
 
-      {/* Search + Upload */}
       <div className="flex items-center gap-3">
         <input
           type="text"
@@ -66,7 +62,6 @@ const Header: React.FC<HeaderProps> = ({
           }}
         />
 
-        {/* Hidden file input */}
         <input
           type="file"
           id="upload"
@@ -80,7 +75,6 @@ const Header: React.FC<HeaderProps> = ({
           }}
         />
 
-        {/* Upload button */}
         <label
           htmlFor="upload"
           className="px-4 py-2 rounded-lg cursor-pointer font-medium shadow-sm hover:opacity-90 transition"
@@ -93,7 +87,6 @@ const Header: React.FC<HeaderProps> = ({
         </label>
       </div>
 
-      {/* Category Selector */}
       <div className="flex gap-2 overflow-x-auto pb-1 pt-1 sm:pt-0 no-scrollbar">
         {categories.map((c) => {
           const isActive = category === c.toLowerCase();
@@ -104,7 +97,11 @@ const Header: React.FC<HeaderProps> = ({
               onClick={() => setCategory(c.toLowerCase())}
               className={`
                 px-4 py-1 rounded-full border transition-all whitespace-nowrap
-                ${isActive ? "ring-2 ring-[#F4ACB7] scale-105" : "opacity-80 hover:opacity-100"}
+                ${
+                  isActive
+                    ? "ring-2 ring-[#F4ACB7] scale-105"
+                    : "opacity-80 hover:opacity-100"
+                }
               `}
               style={{
                 backgroundColor: categoryColors[c],

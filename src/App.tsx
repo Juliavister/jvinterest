@@ -58,8 +58,7 @@ function App() {
   });
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-32">
-
+    <div className="min-h-screen bg-pale-oak-50 pt-32">
       <Header
         search={search}
         setSearch={setSearch}
