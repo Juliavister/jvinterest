@@ -19,15 +19,16 @@ const categories = [
 
 // Category colors (same as EditModal)
 const categoryColors: Record<string, string> = {
-  outfits: "#F4ACB7",
-  matcha: "#B0D39B",
-  aesthetic: "#FFC9D6",
-  travel: "#9AB3F5",
-  food: "#FFBD80",
-  nature: "#A3D6A7",
+  outfits: "#FFE5D9",
+  matcha: "#D8E2DC",
+  aesthetic: "#FFCAD4",
+  travel: "#B8D8FF",
+  food: "#FFF4B5",
+  nature: "#CDEAC0",
   other: "#9D8189",
-  uncategorized: "#D8E2DC",
+  uncategorized: "#E5E5E5",
 };
+
 
 const UploadModal: React.FC<UploadModalProps> = ({
   files,
@@ -53,17 +54,17 @@ const UploadModal: React.FC<UploadModalProps> = ({
 
             return (
               <button
-                key={cat}
-                onClick={() => setSelectedCategory(cat)}
-                style={{
-                  backgroundColor: isActive ? categoryColors[cat] : "#FFE5D9",
-                  color: isActive ? "#FFFFFF" : "#9D8189",
-                  borderColor: "#D8E2DC",
-                }}
-                className="px-4 py-1 rounded-full border text-sm transition-colors"
-              >
-                {cat.charAt(0).toUpperCase() + cat.slice(1)}
-              </button>
+  key={cat}
+  onClick={() => setSelectedCategory(cat)}
+  style={{
+    backgroundColor: isActive ? categoryColors[cat] : "#FFFFFF",
+    color: isActive ? "#FFFFFF" : "#9D8189",
+    borderColor: "#D8E2DC",
+  }}
+  className="px-4 py-1 rounded-full border text-sm transition-all"
+>
+  {cat.charAt(0).toUpperCase() + cat.slice(1)}
+</button>
             );
           })}
         </div>
