@@ -1,6 +1,8 @@
-import { BoardImage } from "../types/BoardImage";
+// src/api/fetchImages.ts
 
-export const fetchImages = async (): Promise<BoardImage[]> => {
-  const res = await fetch("http://localhost:3001/images");
+export const fetchImages = async () => {
+  const API = import.meta.env.VITE_API_URL;
+
+  const res = await fetch(`${API}/images`);
   return res.json();
 };
